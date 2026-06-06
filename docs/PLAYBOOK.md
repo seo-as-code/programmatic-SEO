@@ -6,16 +6,19 @@
 
 ---
 
-## 1. Dónde vive en el monorepo
+## 1. Dónde vive el proyecto
+
+Puedes clonar **solo este repo** o integrarlo en el workspace SEO-as-Code (cada persona elige su ruta local):
 
 ```text
-C:\Users\emami\proyecto_seo\
-├── scripts/              ← SEO-as-Code (Etapa 1-2)
-├── ai-seo-toolkit/       ← AI-as-Code (Etapa 3)
-└── programmatic-seo/     ← pSEO (Etapa 2.5 / arquitectura)
+your-workspace/              # ejemplo: D:\dev\proyecto_seo — NO subir rutas personales a Git
+├── scripts/                 ← SEO-as-Code (Etapa 1-2) — repo SEO-as-Code-Toolkit
+├── programmatic-seo/        ← este repo (Etapa 2.5)
+├── ai-seo-toolkit/          ← AI-as-Code (Etapa 3)
+└── proyecto_seo-index/      ← Index Monitor (opcional, suele ser local)
 ```
 
-Cada carpeta = **repo Git independiente** (como `ai-seo-toolkit`).
+`programmatic-seo`, `ai-seo-toolkit` y el toolkit de datos son **repos Git separados**; la carpeta padre es solo tu workspace local.
 
 ---
 
