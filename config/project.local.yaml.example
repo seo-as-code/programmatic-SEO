@@ -15,4 +15,4 @@ data_sources:
 # Inside SEO-as-Code monorepo (sibling folders):
 # data_sources:
 #   gsc_glob: "../data/raw/gsc_*.csv"
-#   sf_glob: "../data/raw/internos_html.csv"
+#   sf_glob: "../data/raw/sf_html.csv"

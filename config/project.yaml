@@ -12,7 +12,7 @@ project:
 # When nested inside SEO-as-Code monorepo, defaults point to parent exports.
 data_sources:
   gsc_glob: "../data/raw/gsc_*.csv"
-  sf_glob: "../data/raw/internos_html.csv"
+  sf_glob: "../data/raw/sf_*.csv"
   # Standalone demo (no parent repo):
   # gsc_glob: "data/samples/gsc_sample.csv"
   # sf_glob: "data/samples/sf_sample.csv"
