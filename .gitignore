@@ -1,0 +1,22 @@
+# Local site + pattern overrides (never commit)
+config/project.local.yaml
+config/patterns.local.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Generated reports (keep folder structure)
+reports/pseo/*.csv
+reports/pseo/*.yaml
+reports/pseo/*.md
+reports/pseo/*.json
+!reports/pseo/.gitkeep
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

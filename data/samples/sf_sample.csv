@@ -1,0 +1,5 @@
+Address,Title 1,Status Code,Indexability
+https://example.com/,Example Company Home,200,Indexable
+https://example.com/services/,Our Services,200,Indexable
+https://example.com/blog/how-to-fix-a-leak,How to Fix a Leaking Pipe,200,Indexable
+https://example.com/contact/,Contact Us,200,Indexable

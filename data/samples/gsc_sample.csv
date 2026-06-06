@@ -1,0 +1,8 @@
+page,query,clicks,impressions,ctr,position
+https://example.com/services/,example service your city,3,220,0.0136,18.2
+https://example.com/services/,example service yourcity,1,185,0.0054,22.5
+https://example.com/services/,best example service your city,0,160,0.0,28.1
+https://example.com/blog/how-to-guide-cost,how to choose an example service,4,95,0.0421,12.3
+https://example.com/services/,example service near your city,2,88,0.0227,19.8
+https://example.com/services/,example service your city price,0,72,0.0,31.0
+https://example.com/,contact example company,5,60,0.0833,4.2

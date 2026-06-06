@@ -1,0 +1,17 @@
+url: "/blog/{query_slug}/"
+template: blog-post
+schema:
+  - Article
+  - FAQPage
+
+title: "{Query as title case} — {Brand}"
+h1: "{Query as title case}"
+
+sections:
+  - intro
+  - main_content
+  - faq
+  - related_services
+
+internal_links_to:
+  - "/services/"

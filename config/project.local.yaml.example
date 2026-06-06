@@ -1,0 +1,18 @@
+# Copy to project.local.yaml (gitignored). Never commit real client data.
+
+project:
+  name: "My Local Business"
+  domain: "example.com"
+  origin: "https://example.com"
+  locale: "en-US"
+  market: "Your City, Your Country"
+
+# Standalone test with bundled samples:
+data_sources:
+  gsc_glob: "data/samples/gsc_sample.csv"
+  sf_glob: "data/samples/sf_sample.csv"
+
+# Inside SEO-as-Code monorepo (sibling folders):
+# data_sources:
+#   gsc_glob: "../data/raw/gsc_*.csv"
+#   sf_glob: "../data/raw/internos_html.csv"

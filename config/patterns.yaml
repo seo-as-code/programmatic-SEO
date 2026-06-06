@@ -1,0 +1,141 @@
+# Generic programmatic SEO pattern rules (committed to Git).
+# Override services/locations in patterns.local.yaml (gitignored).
+
+version: 1
+
+thresholds:
+  min_impressions: 50
+  position_opportunity_min: 8
+  position_opportunity_max: 30
+  weak_coverage_max: 0.35
+  strong_coverage_min: 0.55
+  cannibalization_min_pages: 2
+
+variables:
+  locations:
+    - slug: your-city
+      labels: ["Your City", "your city"]
+      tokens: [yourcity]
+  services:
+    - slug: example-service
+      labels: ["Example Service"]
+      tokens: [example, service]
+      hub_path: /services/
+      prefer_dedicated_page: true
+
+url_kinds:
+  blog_prefix: /blog/
+  service_prefixes: [/services/, /service/, /our-services/]
+  hub_paths: [/our-services/, /services/]
+  ignore_path_contains: [/wp-admin/, /tag/, /author/, /feed/]
+
+patterns:
+  - id: service_location
+    name: "Service + location"
+    enabled: true
+    match:
+      requires_service: true
+      requires_location: true
+      intents: [local, commercial, transactional, mixed]
+      query_exclude_regex:
+        - "\\b(jobs?|careers?|hiring|vacancies)\\b"
+        - "\\b(login|signin|password)\\b"
+    url_template: "/services/{service_slug}-{location_slug}/"
+    content_template: service-location
+    schema_types: [Service, LocalBusiness]
+    default_action: create_new
+    priority_boost: 15
+
+  - id: service_national
+    name: "Service without explicit geo"
+    enabled: true
+    match:
+      requires_service: true
+      requires_location: false
+      intents: [commercial, transactional]
+    url_template: "/services/{service_slug}/"
+    content_template: service-hub
+    schema_types: [Service]
+    default_action: optimize_existing
+    priority_boost: 8
+
+  - id: blog_informational
+    name: "Informational article"
+    enabled: true
+    match:
+      requires_service: false
+      intents: [informational, mixed]
+      query_include_regex:
+        - "\\b(how|what|why|guide|tips|ideas|cost|price|vs)\\b"
+        - "\\b(como|que es|guia|ideas|precio|coste)\\b"
+    url_template: "/blog/{query_slug}/"
+    content_template: blog-post
+    schema_types: [Article, FAQPage]
+    default_action: create_new
+    priority_boost: 5
+
+  - id: brand_navigational
+    name: "Brand / navigational"
+    enabled: true
+    match:
+      intents: [navigational]
+    url_template: null
+    content_template: none
+    default_action: ignore
+    priority_boost: 0
+
+decision_rules:
+  - id: transactional_no_blog
+    when:
+      intents: [commercial, transactional, local]
+      matched_service: true
+      content_template: blog-post
+    then:
+      action: create_new
+      force_pattern: service_location
+      note: "Use service landing, not blog"
+
+  - id: strong_existing_coverage
+    when:
+      coverage_gte: 0.55
+      landing_kind_in: [service, blog]
+    then:
+      action: optimize_existing
+      note: "Expand existing URL"
+
+  - id: hub_only_weak
+    when:
+      landing_kind: hub
+      coverage_lt: 0.35
+      impressions_gte: 80
+    then:
+      action: create_new
+      note: "Dedicated URL needed beyond hub"
+
+  - id: cannibalization
+    when:
+      gsc_pages_gte: 2
+      impressions_gte: 50
+    then:
+      action: consolidate
+      note: "Consolidate competing URLs"
+
+  - id: low_volume
+    when:
+      impressions_lt: 30
+    then:
+      action: ignore
+      note: "Wait for more GSC volume"
+
+scoring:
+  high:
+    min_impressions: 150
+    max_avg_position: 25
+    actions: [create_new, consolidate]
+  medium:
+    min_impressions: 50
+    max_avg_position: 40
+    actions: [create_new, optimize_existing, consolidate]
+  low:
+    min_impressions: 0
+    actions: [optimize_existing, ignore]

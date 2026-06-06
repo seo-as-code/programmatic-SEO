@@ -1,0 +1,24 @@
+# Copy to patterns.local.yaml (gitignored).
+# Customize services and locations for YOUR niche.
+
+version: 1
+
+variables:
+  locations:
+    - slug: your-city
+      labels: ["Your City"]
+      tokens: [yourcity, "your city"]
+  services:
+    - slug: plumbing
+      labels: ["Plumbing"]
+      tokens: [plumber, plumbing, pipe, drain]
+      hub_path: /services/
+      prefer_dedicated_page: true
+    - slug: heating
+      labels: ["Heating"]
+      tokens: [heating, boiler, hvac]
+      hub_path: /services/
+      prefer_dedicated_page: true
+
+url_kinds:
+  hub_paths: [/services/]

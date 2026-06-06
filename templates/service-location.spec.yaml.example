@@ -1,0 +1,25 @@
+# Page spec generated from pseo_opportunities_*.yaml — implement in CMS or static site.
+
+url: "/services/{service_slug}-{location_slug}/"
+template: service-location
+schema:
+  - Service
+  - LocalBusiness
+
+title: "{Service Label} in {Location Label} | {Brand}"
+meta_description: "Professional {service} in {location}. Contact {brand} for a quote."
+h1: "{Service Label} in {Location Label}"
+
+sections:
+  - intro: "2-3 paragraphs covering primary queries"
+  - benefits: "bullet list"
+  - process: "numbered steps"
+  - faq: "3-5 questions from GSC queries"
+  - cta: "contact / quote"
+
+internal_links_from:
+  - "/services/"
+  - "/"
+
+queries_to_cover:
+  - "paste from pseo_opportunities YAML"
