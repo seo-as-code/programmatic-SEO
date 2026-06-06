@@ -116,7 +116,7 @@ cd programmatic-seo
 git init
 git add .
 git commit -m "Initial Programmatic SEO Toolkit"
-git remote add origin https://github.com/seo-as-code/Programmatic-SEO.git
+git remote add origin https://github.com/seo-as-code/programmatic-SEO.git
 git push -u origin main
 ```
 

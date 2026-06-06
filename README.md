@@ -12,8 +12,8 @@ Rule-based programmatic SEO planner — GSC + crawl data → prioritized URL opp
 Anyone can test in under 2 minutes with bundled sample data:
 
 ```bash
-git clone https://github.com/seo-as-code/Programmatic-SEO.git
-cd Programmatic-SEO
+git clone https://github.com/seo-as-code/programmatic-SEO.git
+cd programmatic-SEO
 pip install -r requirements.txt
 copy config\project.local.yaml.example config\project.local.yaml   # Windows
 # cp config/project.local.yaml.example config/project.local.yaml   # macOS/Linux
